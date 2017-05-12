@@ -56,27 +56,29 @@ function merge(\SplFileInfo $fileInfo)
 
     dump($releases);
 
-    return;
-
     $counter = 0;
-    foreach ($releases as $release => $data) {
-        if ($counter > 0) {
-            $last = $releases[($counter - 1)];
-            $current = $releases[$counter];
+    if (count($releases) > 1) {
 
-            $git->checkout($current);
-            try {
-                dump('current branch ' . $current . ', merge from ' . $last);
-                $git->merge($last);
-            } catch (PHPGit\Exception\GitException $e) {
+        foreach ($releases as $release => $data) {
+            if ($counter > 0) {
+                $last = $releases[($counter - 1)];
+                $current = $releases[$counter];
+
+                $git->checkout($current);
                 try {
-                    $git->merge->abort();
+                    dump('current branch ' . $current . ', merge from ' . $last);
+                    $git->merge($last);
                 } catch (PHPGit\Exception\GitException $e) {
+                    try {
+                        $git->merge->abort();
+                    } catch (PHPGit\Exception\GitException $e) {
+                    }
+                    dump('abort merging at ' . $current);
+                    break;
                 }
-                dump('abort merging at ' . $current);
             }
-        }
 
-        $counter++;
+            $counter++;
+        }
     }
 }
