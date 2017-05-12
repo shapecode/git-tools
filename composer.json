@@ -1,0 +1,38 @@
+{
+    "name": "shapecode/git-tools",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nikita Loges",
+            "email": "git@nikita-loges.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.tenolo.com/repo/private/"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "~2.8|~3.0",
+        "symfony/debug": "~2.8|~3.0",
+        "symfony/finder": "~2.8|~3.0",
+        "symfony/filesystem": "~2.8|~3.0",
+
+        "tenolo/utilities": "~1.4",
+
+        "kzykhys/git": "~0.1",
+        "sebastian/git": "~2.1"
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
