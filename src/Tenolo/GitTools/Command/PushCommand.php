@@ -75,10 +75,14 @@ class PushCommand extends Command
         $directory = new \SplFileInfo(dirname($fileInfo->getPathname()));
 
         try {
+            $this->io->title($directory->getFilename());
+
             $git->pull();
             $git->push();
+
+            $this->io->success('branch successfully pushed');
         } catch (\Exception $exception) {
-            dump($exception);
+            $this->io->error($exception->getMessage());
         }
     }
 

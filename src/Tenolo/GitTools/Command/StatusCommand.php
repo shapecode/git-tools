@@ -39,7 +39,7 @@ class StatusCommand extends Command
         $this->setName('status');
 
         $this->addOption('only-changes', 'oc');
-        $this->addOption('depth', null, InputOption::VALUE_OPTIONAL, null, 0);
+        $this->addOption('depth', null, InputOption::VALUE_OPTIONAL, null, 1);
     }
 
     protected function initialize(InputInterface $input, OutputInterface $output)
@@ -83,7 +83,15 @@ class StatusCommand extends Command
 
         if ($onlyChanges) {
             $this->io->title($directory->getFilename());
-            $this->io->section('Current Branch: ' . $status['branch']);
+
+            $branches = $git->branch();
+            foreach ($branches as $branch) {
+                if ($branch['current']) {
+                    break;
+                }
+            }
+
+            $this->io->text('Current Branch: ' . $branch['name']);
         }
 
         if ($count > 0) {
