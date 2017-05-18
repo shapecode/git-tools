@@ -42,9 +42,6 @@ function merge(\SplFileInfo $fileInfo)
     $git = new Git();
     $git->setRepository($fileInfo->getPathname());
 
-    $git->config->set('user.email', 'git@nikita-loges');
-    $git->config->set('user.name', 'Nikita Loges');
-
     $branches = $git->branch();
     $releases = [];
 

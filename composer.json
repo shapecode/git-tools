@@ -20,10 +20,12 @@
         }
     ],
     "require": {
+        "symfony/console": "~2.8|~3.0",
         "symfony/var-dumper": "~2.8|~3.0",
         "symfony/debug": "~2.8|~3.0",
         "symfony/finder": "~2.8|~3.0",
         "symfony/filesystem": "~2.8|~3.0",
+        "symfony/options-resolver": "~2.8",
 
         "tenolo/utilities": "~1.4",
 
