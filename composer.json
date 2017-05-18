@@ -29,8 +29,7 @@
 
         "tenolo/utilities": "~1.4",
 
-        "kzykhys/git": "~0.1",
-        "sebastian/git": "~2.1"
+        "kzykhys/git": "~0.1"
     },
     "config": {
         "preferred-install": "dist"
