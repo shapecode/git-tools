@@ -9,5 +9,6 @@ $application = new Application('git-tools', '1.0.0');
 
 $application->add(new GitCommand\StatusCommand());
 $application->add(new GitCommand\CommitCommand());
+$application->add(new GitCommand\PushCommand());
 
 $application->run();
