@@ -81,11 +81,13 @@ class CommitCommand extends Command
         try {
             $status = $git->status();
 
-            foreach ($status['changes'] as $change) {
-                $git->add($change['file']);
-            }
+            if(count($status['changes'])) {
+                foreach ($status['changes'] as $change) {
+                    $git->add($change['file']);
+                }
 
-            $git->commit($message);
+                $git->commit($message);
+            }
         } catch (\Exception $exception) {
             dump($exception);
         }
