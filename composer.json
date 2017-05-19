@@ -24,10 +24,12 @@
         "symfony/var-dumper": "~2.8|~3.0",
         "symfony/debug": "~2.8|~3.0",
         "symfony/finder": "~2.8|~3.0",
-        "symfony/filesystem": "~2.8|~3.0",
-        "symfony/options-resolver": "~2.8",
 
-        "tenolo/utilities": "~1.4",
+        "symfony/filesystem": "~2.8",
+        "symfony/options-resolver": "~2.8",
+        "symfony/process": "~2.8",
+
+        "jbzoo/utils": "~1.7",
 
         "kzykhys/git": "~0.1"
     },

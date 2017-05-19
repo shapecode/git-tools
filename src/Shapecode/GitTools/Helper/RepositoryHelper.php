@@ -1,17 +1,15 @@
 <?php
 
-namespace Tenolo\GitTools\Helper;
+namespace Shapecode\GitTools\Helper;
 
 use PHPGit\Git;
-use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
 /**
  * Class RepositoryHelper
  *
- * @package Tenolo\GitTools\Helper
+ * @package Shapecode\GitTools\Helper
  * @author  Nikita Loges
- * @company tenolo GbR
  */
 class RepositoryHelper
 {

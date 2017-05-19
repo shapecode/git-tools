@@ -1,36 +1,20 @@
 <?php
 
-namespace Tenolo\GitTools\Command;
+namespace Shapecode\GitTools\Command;
 
 use PHPGit\Git;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
-use Tenolo\GitTools\Helper\RepositoryHelper;
 
 /**
  * Class CommitCommand
  *
- * @package Tenolo\GitTools\Command
+ * @package Shapecode\GitTools\Command
  * @author  Nikita Loges
- * @company tenolo GbR
  */
-class CommitCommand extends Command
+class CommitCommand extends AbstractCommand
 {
-
-    /** @var InputInterface */
-    protected $input;
-
-    /** @var OutputInterface */
-    protected $output;
-
-    /** @var SymfonyStyle */
-    protected $io;
-
-    /** @var RepositoryHelper */
-    protected $repoHelper;
 
     /**
      * @inheritdoc
@@ -41,14 +25,6 @@ class CommitCommand extends Command
 
         $this->addOption('all', null);
         $this->addArgument('message', InputArgument::REQUIRED);
-    }
-
-    protected function initialize(InputInterface $input, OutputInterface $output)
-    {
-        $this->input = $input;
-        $this->output = $output;
-        $this->io = new SymfonyStyle($input, $output);
-        $this->repoHelper = new RepositoryHelper();
     }
 
     /**
@@ -81,7 +57,7 @@ class CommitCommand extends Command
         try {
             $status = $git->status();
 
-            if(count($status['changes'])) {
+            if (count($status['changes'])) {
                 foreach ($status['changes'] as $change) {
                     $git->add($change['file']);
                 }

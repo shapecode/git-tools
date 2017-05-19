@@ -1,35 +1,19 @@
 <?php
 
-namespace Tenolo\GitTools\Command;
+namespace Shapecode\GitTools\Command;
 
 use PHPGit\Git;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
-use Tenolo\GitTools\Helper\RepositoryHelper;
 
 /**
  * Class PushCommand
  *
  * @package Tenolo\GitTools\Command
  * @author  Nikita Loges
- * @company tenolo GbR
  */
-class PushCommand extends Command
+class PushCommand extends AbstractCommand
 {
-
-    /** @var InputInterface */
-    protected $input;
-
-    /** @var OutputInterface */
-    protected $output;
-
-    /** @var SymfonyStyle */
-    protected $io;
-
-    /** @var RepositoryHelper */
-    protected $repoHelper;
 
     /**
      * @inheritdoc
@@ -39,14 +23,6 @@ class PushCommand extends Command
         $this->setName('push');
 
         $this->addOption('all', null);
-    }
-
-    protected function initialize(InputInterface $input, OutputInterface $output)
-    {
-        $this->input = $input;
-        $this->output = $output;
-        $this->io = new SymfonyStyle($input, $output);
-        $this->repoHelper = new RepositoryHelper();
     }
 
     /**

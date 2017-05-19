@@ -6,7 +6,7 @@ use PHPGit\Git;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
-use Tenolo\Utilities\Utils\StringUtil;
+use JBZoo\Utils\Str;
 
 Debug::enable();
 
@@ -46,7 +46,7 @@ function merge(\SplFileInfo $fileInfo)
     $releases = [];
 
     foreach ($branches as $name => $data) {
-        if (StringUtil::startsWith($name, 'release/')) {
+        if (Str::isStart($name, 'release/')) {
             $releases[] = $name;
         }
     }

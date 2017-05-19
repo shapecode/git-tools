@@ -3,7 +3,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
-use Tenolo\GitTools\Command as GitCommand;
+use Shapecode\GitTools\Command as GitCommand;
 
 $application = new Application('git-tools', '1.0.0');
 
