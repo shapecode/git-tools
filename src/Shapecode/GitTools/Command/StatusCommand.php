@@ -49,7 +49,7 @@ class StatusCommand extends AbstractCommand
     protected function gitStatus(\SplFileInfo $fileInfo)
     {
         $git = $this->repoHelper->getGitRepository($fileInfo);
-        $directory = new \SplFileInfo(dirname($fileInfo->getPathname()));
+        $directory = $this->repoHelper->getGitFileInfo($fileInfo);
 
         $status = $git->status();
 

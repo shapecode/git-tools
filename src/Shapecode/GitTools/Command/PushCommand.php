@@ -48,7 +48,7 @@ class PushCommand extends AbstractCommand
     {
         /** @var Git $git */
         $git = $this->repoHelper->getGitRepository($fileInfo);
-        $directory = new \SplFileInfo(dirname($fileInfo->getPathname()));
+        $directory = $this->repoHelper->getGitFileInfo($fileInfo);
 
         try {
             $this->io->title($directory->getFilename());

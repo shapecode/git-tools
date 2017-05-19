@@ -51,11 +51,18 @@ class RepositoryHelper
     public function getGitRepository(\SplFileInfo $fileInfo)
     {
         $git = new Git();
-        $git->setRepository($fileInfo->getPathname() . '/..');
-
-        $git->config->set('user.email', 'git@nikita-loges');
-        $git->config->set('user.name', 'Nikita Loges');
+        $git->setRepository($this->getGitFileInfo($fileInfo));
 
         return $git;
+    }
+
+    /**
+     * @param \SplFileInfo $fileInfo
+     *
+     * @return \SplFileInfo
+     */
+    public function getGitFileInfo(\SplFileInfo $fileInfo)
+    {
+        return new \SplFileInfo(dirname($fileInfo->getPathname()));
     }
 }
