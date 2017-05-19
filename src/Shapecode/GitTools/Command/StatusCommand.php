@@ -22,8 +22,8 @@ class StatusCommand extends AbstractCommand
     {
         $this->setName('status');
 
-        $this->addOption('only-changes', 'oc');
-        $this->addOption('depth', null, InputOption::VALUE_OPTIONAL, null, 1);
+        $this->addOption('only-changes', 'c');
+        $this->addOption('depth', null, InputOption::VALUE_OPTIONAL);
     }
 
     /**
@@ -31,8 +31,7 @@ class StatusCommand extends AbstractCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $depth = (int)$input->getOption('depth');
-        $depth = ($depth == 0) ? 0 : '<= ' . $depth;
+        $depth = $input->getOption('depth');
 
         $finder = $this->repoHelper->findRepositories([
             'depth' => $depth
