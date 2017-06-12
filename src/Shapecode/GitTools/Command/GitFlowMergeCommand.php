@@ -12,7 +12,6 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @package Shapecode\GitTools\Command
  * @author  Nikita Loges
- * @company tenolo GbR
  */
 class GitFlowMergeCommand extends AbstractCommand
 {

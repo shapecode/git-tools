@@ -9,7 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * Class StatusCommand
  *
- * @package Tenolo\GitTools\Command
+ * @package Shapecode\GitTools\Command
  * @author  Nikita Loges
  */
 class StatusCommand extends AbstractCommand

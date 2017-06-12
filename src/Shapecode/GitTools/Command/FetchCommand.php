@@ -7,12 +7,12 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class PushCommand
+ * Class FetchCommand
  *
  * @package Shapecode\GitTools\Command
  * @author  Nikita Loges
  */
-class PushCommand extends AbstractCommand
+class FetchCommand extends AbstractCommand
 {
 
     /**
@@ -20,7 +20,7 @@ class PushCommand extends AbstractCommand
      */
     protected function configure()
     {
-        $this->setName('push');
+        $this->setName('pull');
 
         $this->addOption('all', null);
     }
@@ -53,8 +53,7 @@ class PushCommand extends AbstractCommand
         try {
             $this->io->title($directory->getFilename());
 
-            $git->pull();
-            $git->push();
+            $git->fetch();
 
             $this->io->success('branch successfully pushed');
         } catch (\Exception $exception) {

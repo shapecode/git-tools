@@ -13,7 +13,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  *
  * @package Shapecode\GitTools\Command
  * @author  Nikita Loges
- * @company tenolo GbR
  */
 class AbstractCommand extends Command
 {
