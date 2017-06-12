@@ -13,12 +13,6 @@
             "": "src/"
         }
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://repo.tenolo.com/repo/private/"
-        }
-    ],
     "require": {
         "php": "~5.6|~7.0",
 
