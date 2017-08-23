@@ -13,5 +13,6 @@ $application->add(new GitCommand\FetchCommand());
 $application->add(new GitCommand\PullCommand());
 $application->add(new GitCommand\PushCommand());
 $application->add(new GitCommand\StatusCommand());
+$application->add(new GitCommand\UnsetUserConfigCommand());
 
 $application->run();
