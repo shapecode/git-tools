@@ -5,6 +5,7 @@ namespace Shapecode\GitTools\Command;
 use PHPGit\Git;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
@@ -23,7 +24,8 @@ class CommitCommand extends AbstractCommand
     {
         $this->setName('commit');
 
-        $this->addOption('all', null);
+        $this->addOption('all', 'a');
+        $this->addOption('depth', null, InputOption::VALUE_OPTIONAL, null, 0);
         $this->addArgument('message', InputArgument::REQUIRED);
     }
 
@@ -32,7 +34,7 @@ class CommitCommand extends AbstractCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $depth = ($input->getOption('all')) ? null : 0;
+        $depth = ($input->getOption('all')) ? null : $input->getOption('depth');
         $message = $input->getArgument('message');
 
         $finder = $this->repoHelper->findRepositories([
