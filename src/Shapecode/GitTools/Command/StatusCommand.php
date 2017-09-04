@@ -22,9 +22,8 @@ class StatusCommand extends AbstractCommand
     {
         $this->setName('status');
 
-        $this->addOption('only-changes', 'c');
-        $this->addOption('all', 'a');
-        $this->addOption('depth', null, InputOption::VALUE_OPTIONAL, null, 0);
+        $this->addOption('show-all', 'a');
+        $this->addOption('depth', null, InputOption::VALUE_OPTIONAL, null, 2);
     }
 
     /**
@@ -32,7 +31,7 @@ class StatusCommand extends AbstractCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $depth = ($input->getOption('all')) ? null : $input->getOption('depth');
+        $depth = ($input->getOption('depth') == 'all') ? null : $input->getOption('depth');
 
         $finder = $this->repoHelper->findRepositories([
             'depth' => $depth
@@ -55,7 +54,7 @@ class StatusCommand extends AbstractCommand
 
         $count = count($status['changes']);
 
-        $onlyChanges = (!$this->input->getOption('only-changes') || $count > 0);
+        $onlyChanges = $this->input->getOption('show-all');
 
         if ($onlyChanges) {
             $this->io->title($directory->getFilename());
