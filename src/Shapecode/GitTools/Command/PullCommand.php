@@ -23,7 +23,6 @@ class PullCommand extends AbstractCommand
     {
         $this->setName('pull');
 
-        $this->addOption('all', 'a');
         $this->addOption('depth', null, InputOption::VALUE_OPTIONAL, null, 0);
     }
 
@@ -32,7 +31,7 @@ class PullCommand extends AbstractCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $depth = ($input->getOption('all')) ? null : $input->getOption('depth');
+        $depth = ($input->getOption('depth') == 'all') ? null : $input->getOption('depth');
 
         $finder = $this->repoHelper->findRepositories([
             'depth' => $depth
