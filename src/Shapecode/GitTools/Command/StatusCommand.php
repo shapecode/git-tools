@@ -54,9 +54,9 @@ class StatusCommand extends AbstractCommand
 
         $count = count($status['changes']);
 
-        $onlyChanges = $this->input->getOption('show-all');
+        $showAll = $this->input->getOption('show-all');
 
-        if ($onlyChanges) {
+        if ($count > 0) {
             $this->io->title($directory->getFilename());
 
             $branches = $git->branch();
@@ -68,13 +68,12 @@ class StatusCommand extends AbstractCommand
 
             $this->io->text('Path: ' . $directory->getPathname());
             $this->io->text('Current Branch: ' . $branch['name']);
-        }
 
-        if ($count > 0) {
             $this->io->note($count . ' Changes found');
             $this->renderChanges($status['changes']);
         } else {
-            if ($onlyChanges) {
+            if ($showAll) {
+                $this->io->title($directory->getFilename());
                 $this->io->success('No Changes detected');
             }
         }

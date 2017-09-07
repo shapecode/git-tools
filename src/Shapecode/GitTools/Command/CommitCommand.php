@@ -24,7 +24,6 @@ class CommitCommand extends AbstractCommand
     {
         $this->setName('commit');
 
-        $this->addOption('all', 'a');
         $this->addOption('depth', null, InputOption::VALUE_OPTIONAL, null, 0);
         $this->addArgument('message', InputArgument::REQUIRED);
     }
@@ -34,7 +33,7 @@ class CommitCommand extends AbstractCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $depth = ($input->getOption('all')) ? null : $input->getOption('depth');
+        $depth = ($input->getOption('depth') == 'all') ? null : $input->getOption('depth');
         $message = $input->getArgument('message');
 
         $finder = $this->repoHelper->findRepositories([
@@ -42,7 +41,7 @@ class CommitCommand extends AbstractCommand
         ]);
 
         foreach ($finder as $dir) {
-            $this->gitStatus($dir, $message);
+            $this->commit($dir, $message);
         }
     }
 
@@ -50,11 +49,10 @@ class CommitCommand extends AbstractCommand
      * @param \SplFileInfo $fileInfo
      * @param              $message
      */
-    protected function gitStatus(\SplFileInfo $fileInfo, $message)
+    protected function commit(\SplFileInfo $fileInfo, $message)
     {
         /** @var Git $git */
         $git = $this->repoHelper->getGitRepository($fileInfo);
-        $directory = $this->repoHelper->getGitFileInfo($fileInfo);
 
         try {
             $status = $git->status();
@@ -67,7 +65,6 @@ class CommitCommand extends AbstractCommand
                 $git->commit($message);
             }
         } catch (\Exception $exception) {
-            dump($exception);
         }
     }
 
