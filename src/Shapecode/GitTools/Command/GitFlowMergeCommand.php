@@ -21,9 +21,9 @@ class GitFlowMergeCommand extends AbstractCommand
      */
     protected function configure()
     {
-        $this->setName('gitflow-merge');
+        parent::configure();
 
-        $this->addOption('all', null);
+        $this->setName('gitflow-merge');
     }
 
     /**

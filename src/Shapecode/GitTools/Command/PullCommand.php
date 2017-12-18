@@ -21,9 +21,9 @@ class PullCommand extends AbstractCommand
      */
     protected function configure()
     {
-        $this->setName('pull');
+        parent::configure();
 
-        $this->addOption('depth', null, InputOption::VALUE_OPTIONAL, null, 0);
+        $this->setName('pull');
     }
 
     /**

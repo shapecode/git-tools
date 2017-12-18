@@ -21,9 +21,9 @@ class PushCommand extends AbstractCommand
      */
     protected function configure()
     {
-        $this->setName('push');
+        parent::configure();
 
-        $this->addOption('depth', null, InputOption::VALUE_OPTIONAL, null, 0);
+        $this->setName('push');
     }
 
     /**

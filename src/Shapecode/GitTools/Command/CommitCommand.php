@@ -22,9 +22,10 @@ class CommitCommand extends AbstractCommand
      */
     protected function configure()
     {
+        parent::configure();
+
         $this->setName('commit');
 
-        $this->addOption('depth', null, InputOption::VALUE_OPTIONAL, null, 0);
         $this->addArgument('message', InputArgument::REQUIRED);
     }
 

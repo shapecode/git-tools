@@ -21,9 +21,10 @@ class LogCommand extends AbstractCommand
      */
     protected function configure()
     {
+        parent::configure();
+
         $this->setName('log');
 
-        $this->addOption('depth', null, InputOption::VALUE_OPTIONAL, null, 2);
         $this->addOption('date', null, InputOption::VALUE_REQUIRED, null, 'now');
         $this->addOption('period', null, InputOption::VALUE_OPTIONAL, null, '1 day');
     }

@@ -22,10 +22,9 @@ class UnsetUserConfigCommand extends AbstractCommand
      */
     protected function configure()
     {
-        $this->setName('unset-user-config');
+        parent::configure();
 
-        $this->addOption('all', 'a');
-        $this->addOption('depth', null, InputOption::VALUE_OPTIONAL, null, 0);
+        $this->setName('unset-user-config');
     }
 
     /**

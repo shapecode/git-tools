@@ -20,9 +20,9 @@ class FetchCommand extends AbstractCommand
      */
     protected function configure()
     {
-        $this->setName('pull');
+        parent::configure();
 
-        $this->addOption('all', null);
+        $this->setName('pull');
     }
 
     /**
